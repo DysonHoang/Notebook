@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&family=Fira+Code:wght@400;700&family=Quicksand:wght@700&display=swap"
+      rel="stylesheet">
+   <style>
+      html,
+      body {
+         height: 100%;
+      }
+
+      body {
+         font-family: 'Roboto', Arial, sans-serif;
+         background: linear-gradient(135deg, #0a2342 0%, #19376d 100%);
+         color: #eaf6fb;
+         margin: 0;
+         padding: 0;
+         font-size: 22px;
+         min-height: 100vh;
+         position: relative;
+         overflow-x: hidden;
+         background-attachment: fixed;
+      }
+
+      body::before,
+      body::after {
+         content: "";
+         position: fixed;
+         z-index: 0;
+         border-radius: 50%;
+         filter: blur(70px);
+         opacity: 0.22;
+         pointer-events: none;
+         animation: float 12s ease-in-out infinite alternate;
+      }
+
+      body::before {
+         width: 420px;
+         height: 420px;
+         left: -160px;
+         top: -120px;
+         background: radial-gradient(circle, #274690 60%, #142850 100%);
+         animation-delay: 0s;
+      }
+
+      body::after {
+         width: 340px;
+         height: 340px;
+         right: -120px;
+         bottom: -80px;
+         background: radial-gradient(circle, #274690 60%, #274690 100%);
+         animation-delay: 2s;
+      }
+
+      @keyframes float {
+         0% {
+            transform: translateY(0) scale(1);
+         }
+
+         100% {
+            transform: translateY(40px) scale(1.08);
+         }
+      }
+
+      .container {
+         max-width: 900px;
+         margin: 48px auto 48px auto;
+         background: rgba(20, 40, 80, 0.75);
+         border-radius: 40px;
+         box-shadow: 0 22px 80px 0 rgba(10, 35, 66, 0.45), 0 0 0 10px #274690cc;
+         padding: 70px 80px 70px 80px;
+         border: 5px solid #274690;
+         position: relative;
+         overflow: hidden;
+         backdrop-filter: blur(18px) saturate(1.2);
+         animation: fadeIn 1.2s cubic-bezier(.4, 0, .2, 1);
+      }
+
+      @keyframes fadeIn {
+         from {
+            opacity: 0;
+            transform: translateY(40px);
+         }
+
+         to {
+            opacity: 1;
+            transform: none;
+         }
+      }
+
+      .container::before,
+      .container::after {
+         content: "";
+         position: absolute;
+         border-radius: 50%;
+         z-index: 0;
+         opacity: 0.18;
+         pointer-events: none;
+      }
+
+      .container::before {
+         top: -90px;
+         right: -90px;
+         width: 260px;
+         height: 260px;
+         background: radial-gradient(circle, #19376d 60%, #274690 100%);
+      }
+
+      .container::after {
+         bottom: -70px;
+         left: -70px;
+         width: 200px;
+         height: 200px;
+         background: radial-gradient(circle, #274690 60%, #142850 100%);
+      }
+
+      .container>* {
+         position: relative;
+         z-index: 1;
+      }
+
+      .main-title {
+         text-align: center;
+         font-size: 2.6em;
+         margin-bottom: 24px;
+         font-family: 'Pacifico', cursive;
+         letter-spacing: 2px;
+         background: linear-gradient(90deg, #274690, #00aaff, #274690);
+         background-size: 200% auto;
+         color: transparent;
+         background-clip: text;
+         -webkit-background-clip: text;
+         animation: gradientText 3s linear infinite alternate;
+         filter: drop-shadow(0 2px 16px #00aaff22);
+         user-select: none;
+      }
+
+      /* Add a white man image style */
+      .white-man-img {
+         display: block;
+         margin: 32px auto 0 auto;
+         border-radius: 24px;
+         box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12), 0 0 0 6px #fff2;
+         max-width: 320px;
+         width: 100%;
+         height: auto;
+         border: 4px solid #fff;
+         background: #fff;
+         transition: transform 0.18s, box-shadow 0.18s;
+      }
+
+      .white-man-img:hover {
+         transform: scale(1.07) rotate(-2deg);
+         box-shadow: 0 16px 48px #fff6;
+      }
+
+      @keyframes gradientText {
+         0% {
+            background-position: 0%;
+         }
+
+         100% {
+            background-position: 100%;
+         }
+      }
+
+      h1 {
+         color: #00aaff;
+         margin-top: 36px;
+         margin-bottom: 18px;
+         font-size: 2.2em;
+         border-left: 14px solid #274690;
+         padding-left: 30px;
+         letter-spacing: 2px;
+         background: linear-gradient(90deg, #19376d 60%, #274690 100%);
+         border-radius: 18px;
+         box-shadow: 0 2px 18px rgba(0, 170, 255, 0.13);
+         font-weight: 700;
+         font-family: 'Quicksand', 'Pacifico', cursive, 'Roboto', Arial, sans-serif;
+         text-shadow: 0 2px 16px #00aaff22;
+         transition: background 0.3s;
+         position: relative;
+         overflow: hidden;
+      }
+
+      h1::after {
+         content: "";
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(120deg, #00aaff 0%, #274690 100%);
+         opacity: 0.09;
+         z-index: 0;
+         pointer-events: none;
+      }
+
+      ul {
+         list-style: none;
+         padding: 0;
+         margin-bottom: 32px;
+      }
+
+      ul li {
+         margin-bottom: 20px;
+         padding-left: 0;
+         position: relative;
+         transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+         border-radius: 14px;
+         background: linear-gradient(90deg, #142850 60%, #274690 100%);
+         box-shadow: 0 1px 10px #00aaff1a;
+         font-family: 'Fira Code', 'Roboto Mono', monospace;
+         overflow: hidden;
+         cursor: pointer;
+      }
+
+      ul li:hover {
+         transform: translateX(16px) scale(1.09) rotate(-1deg);
+         box-shadow: 0 8px 26px #00aaff22;
+         background: linear-gradient(90deg, #274690 60%, #19376d 100%);
+         filter: brightness(1.08);
+      }
+
+      ul li::before {
+         content: "";
+         display: inline-block;
+         width: 19px;
+         height: 19px;
+         background: linear-gradient(135deg, #00aaff 60%, #274690 100%);
+         border-radius: 50%;
+         margin-right: 16px;
+         vertical-align: middle;
+         box-shadow: 0 2px 14px #00aaff33;
+         border: 3px solid #19376d;
+      }
+
+      a {
+         color: #00aaff;
+         text-decoration: none;
+         font-weight: 700;
+         transition: color 0.22s, background 0.22s, box-shadow 0.22s, transform 0.14s;
+         padding: 9px 22px;
+         border-radius: 12px;
+         background: linear-gradient(90deg, #142850 60%, #274690 100%);
+         box-shadow: 0 1px 12px rgba(0, 170, 255, 0.13);
+         font-size: 1.18em;
+         letter-spacing: 0.8px;
+         border: 2.5px solid #19376d;
+         display: inline-block;
+         font-family: 'Fira Code', 'Roboto Mono', monospace;
+      }
+
+      a:hover {
+         color: #fff;
+         background: linear-gradient(90deg, #00aaff 60%, #274690 100%);
+         text-decoration: underline;
+         box-shadow: 0 8px 28px #00aaffbb;
+         transform: scale(1.09) rotate(-2deg);
+         border-color: #00aaff;
+      }
+
+      hr {
+         border: none;
+         border-top: 5px dashed #274690;
+         margin: 54px 0 40px 0;
+         opacity: 0.85;
+         box-shadow: 0 2px 10px #00aaff22;
+      }
+
+      p {
+         background: linear-gradient(90deg, #142850 60%, #274690 100%);
+         border-left: 12px solid #00aaff;
+         padding: 26px 44px;
+         border-radius: 22px;
+         font-size: 1.28em;
+         margin-bottom: 48px;
+         color: #eaf6fb;
+         box-shadow: 0 2px 16px rgba(0, 170, 255, 0.13);
+         font-style: italic;
+         font-family: 'Roboto', Arial, sans-serif;
+         position: relative;
+         overflow: hidden;
+      }
+
+      p::after {
+         content: "✨";
+         position: absolute;
+         right: 22px;
+         bottom: 16px;
+         font-size: 1.5em;
+         opacity: 0.22;
+         pointer-events: none;
+      }
+
+      img {
+         display: block;
+         margin: 54px auto 0 auto;
+         border-radius: 36px;
+         box-shadow: 0 12px 50px rgba(10, 35, 66, 0.22), 0 0 0 10px #274690cc;
+         max-width: 100%;
+         height: auto;
+         border: 6px solid #274690;
+         transition: transform 0.22s, box-shadow 0.22s;
+         background: #19376d;
+         filter: saturate(1.18) contrast(1.10);
+      }
+
+      img:hover {
+         transform: scale(1.09) rotate(-3deg);
+         box-shadow: 0 24px 64px #00aaffbb;
+         filter: saturate(1.35) contrast(1.18);
+      }
+
+      /* Add animated floating bubbles */
+      .bubbles {
+         position: fixed;
+         left: 0;
+         top: 0;
+         width: 100vw;
+         height: 100vh;
+         pointer-events: none;
+         z-index: 2;
+         overflow: hidden;
+      }
+
+      .bubble {
+         position: absolute;
+         border-radius: 50%;
+         opacity: 0.13;
+         background: linear-gradient(135deg, #00aaff 60%, #274690 100%);
+         animation: bubbleFloat 16s linear infinite;
+         filter: blur(2px);
+         box-shadow: 0 0 40px #00aaffaa;
+         will-change: transform;
+      }
+
+      .bubble:nth-child(1) {
+         width: 70px;
+         height: 70px;
+         left: 8%;
+         top: 80%;
+         animation-delay: 0s;
+      }
+
+      .bubble:nth-child(2) {
+         width: 50px;
+         height: 50px;
+         left: 82%;
+         top: 92%;
+         animation-delay: 2s;
+      }
+
+      .bubble:nth-child(3) {
+         width: 90px;
+         height: 90px;
+         left: 48%;
+         top: 97%;
+         animation-delay: 4s;
+      }
+
+      .bubble:nth-child(4) {
+         width: 38px;
+         height: 38px;
+         left: 72%;
+         top: 87%;
+         animation-delay: 6s;
+      }
+
+      .bubble:nth-child(5) {
+         width: 60px;
+         height: 60px;
+         left: 28%;
+         top: 94%;
+         animation-delay: 8s;
+      }
+
+      @keyframes bubbleFloat {
+         0% {
+            transform: translateY(0) scale(1) rotate(0deg);
+         }
+
+         50% {
+            transform: translateY(-55vh) scale(1.12) rotate(8deg);
+         }
+
+         100% {
+            transform: translateY(-110vh) scale(1.22) rotate(-8deg);
+         }
+      }
+
+      /* Add animated sparkles */
+      .sparkle {
+         position: absolute;
+         width: 18px;
+         height: 18px;
+         background: radial-gradient(circle, #eaf6fb 60%, #00aaff 100%);
+         border-radius: 50%;
+         opacity: 0.18;
+         pointer-events: none;
+         animation: sparkleMove 8s linear infinite;
+         z-index: 3;
+         filter: blur(1px);
+         will-change: transform, opacity;
+      }
+
+      .sparkle:nth-child(6) {
+         left: 20%;
+         top: 30%;
+         animation-delay: 0s;
+      }
+
+      .sparkle:nth-child(7) {
+         left: 70%;
+         top: 20%;
+         animation-delay: 2s;
+      }
+
+      .sparkle:nth-child(8) {
+         left: 60%;
+         top: 60%;
+         animation-delay: 4s;
+      }
+
+      .sparkle:nth-child(9) {
+         left: 35%;
+         top: 75%;
+         animation-delay: 6s;
+      }
+
+      @keyframes sparkleMove {
+         0% {
+            opacity: 0.18;
+            transform: scale(1) rotate(0deg);
+         }
+
+         30% {
+            opacity: 0.32;
+            transform: scale(1.3) rotate(20deg);
+         }
+
+         50% {
+            opacity: 0.22;
+            transform: scale(1.1) rotate(-10deg);
+         }
+
+         100% {
+            opacity: 0.18;
+            transform: scale(1) rotate(0deg);
+         }
+      }
+
+      /* Responsive */
+      @media (max-width: 700px) {
+         .container {
+            padding: 18px 6px;
+         }
+
+         h1 {
+            font-size: 1.25em;
+            padding-left: 10px;
+         }
+
+         p {
+            padding: 10px 8px;
+         }
+
+         img {
+            margin-top: 18px;
+         }
+
+         .white-man-img {
+            max-width: 95vw;
+         }
+      }
+   </style>
+</head>
+<!-- ...rest of your HTML remains unchanged... -->
+
+
+<body>
+   <div class="bubbles">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+   </div>
+   <div class="container">
+      <!-- ...existing code... -->
+      <div class="main-title">
+         My Notebook
+      </div>
+
+      <!-- Add some white man images here -->
+      <h1>Links</h1>
+      <ul>
+         <li>
+            <a href="https://lqdtimetable.pages.dev/?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo" target="_blank">
+               Thời khóa biểu (CRL)
+            </a>
+         </li>
+         <li>
+            <a href="https://www.timeanddate.com/countdown/generic?iso=20250603T00&p0=1946&font=cursive"
+               target="_parent">
+               Countdown
+            </a>
+         </li>
+         <li>
+            <a href="https://chuyenhagiang.ntucoder.net/Coder/Details/DysonHoang" target="_parent">
+               chuyên hà giang coder
+            </a>
+         </li>
+         <li>
+            <a href="https://thptchuyen.ntucoder.net/Coder/Details/KBC_DucAnh" target="_parent">
+               ntucoder
+            </a>
+         </li>
+         <li>
+            <a href="https://bachlieu.ntucoder.net/Coder/Details/KBC_DucAnh" target="_parent">
+               BachlieuCoder
+            </a>
+         </li>
+      </ul>
+
+      <hr>
+
+      <h1>Solving These Problems (Codeforces)</h1>
+      <ul>
+         <li>
+            <a href="https://codeforces.com/problemset/problem/2096/B" target="_top">2096B</a>
+         </li>
+      </ul>
+
+      <h1>Solving These Problems (NTUcoder)</h1>
+      <ul>
+         <li>
+            <a href="https://thptchuyen.ntucoder.net/Problem/Details/9735" target="_top">SUBMATRIX</a>
+         </li>
+         <li>
+            <a href="https://thptchuyen.ntucoder.net/Problem/Details/8472" target="_top">BOOKS</a>
+         </li>
+         <li>
+            <a href="https://thptchuyen.ntucoder.net/ckfinder/userfiles/files/BACTERIUM.pdf" target="_top">BACTERIUM</a>
+         </li>
+         <li>
+            <a href="https://thptchuyen.ntucoder.net/Problem/Details/9734" target="_top">9734</a>
+         </li>
+      </ul>
+      <h1>Solving These Problems (CHGcoder)</h1>
+      <ul>
+         <li>
+            <a href="https://chuyenhagiang.ntucoder.net/Problem/Details/10838" target="_top">Cocacola</a>
+         </li>
+      </ul>
+
+      <h1>Need to Practice More</h1>
+      <p>Binary Search, Greedy, DP, prefix sum</p>
+
+      <h1>My honest reaction</h1>
+      <img src="https://media.tenor.com/vSOipmxhVSgAAAAM/dog-relax.gif" alt="dog" width="1000" height="500">
+
+      <h1>My favourite playlist~</h1>
+      <div style="display: flex; justify-content: center; margin-top: 32px;">
+         <iframe style="border-radius:16px"
+            src="https://open.spotify.com/embed/playlist/2oXL5kP9oejWv12uWdoNql?utm_source=generator" width="100%"
+            height="152" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      </div>
+   </div>
+</body>
+
+</html>
